@@ -1,0 +1,7 @@
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\lab2app.exe
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\appsettings.Development.json
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\appsettings.json
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\lab2app.dll
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\lab2app.deps.json
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\lab2app.runtimeconfig.json
+C:\Users\mbigaj1\DotNetLabs\IoT23_25586\lab2\lab2app\bin\Release\net7.0\publish\lab2app.pdb
