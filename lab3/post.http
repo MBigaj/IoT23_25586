@@ -1,0 +1,7 @@
+POST https://lab3-function.azurewebsites.net/api/PersonFunction HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Mine",
+    "lastName": "Guy"
+}
