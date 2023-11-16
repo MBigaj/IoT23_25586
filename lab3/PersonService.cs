@@ -16,11 +16,11 @@ namespace lab3.Functions
             return person;
         }
 
-        public Person Update(int id, string firstName, string lastName)
+        public Person Update(Person personData)
         {
-            var person = people.First(w => w.id == id);
-            person.firstName = firstName;
-            person.lastName = lastName;
+            var person = people.First(w => w.id == personData.id);
+            person.firstName = personData.firstName;
+            person.lastName = personData.lastName;
 
             return person;
         }
@@ -31,7 +31,7 @@ namespace lab3.Functions
             people.Remove(person);
         }
 
-        public Person Find(int id)
+        public Person FindById(int id)
         {
             return people.First(w => w.id == id);
         }
@@ -39,13 +39,6 @@ namespace lab3.Functions
         public IEnumerable<Person> Get()
         {
             return people;
-        }
-
-        public class Person
-        {
-            public int id { get; set; }
-            public string firstName { get; set; }
-            public string lastName { get; set; }
         }
     }
 }
