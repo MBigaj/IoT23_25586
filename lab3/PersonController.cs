@@ -1,4 +1,7 @@
 using Microsoft.Extensions.Logging;
+using lab3.Services;
+using lab3.Database;
+using Microsoft.Azure.Functions.Worker.Http;
 
 namespace lab3.Functions
 {
@@ -14,11 +17,18 @@ namespace lab3.Functions
             this.logger = logger;
             this.personService = personService;
         }
-
+        
         [HttpGet]
-        public IEnumerable<Person> AddPerson()
+        public IEnumerable<Person> GetPeople()
         {
-            return personService.AddPerson();
+            return personService.GetPeople();
         }
+
+        [HttpPost]
+        public Person AddPerson([FromBody] Person person)
+        {
+            return personService.AddPerson(person);
+        }
+
     }
 }

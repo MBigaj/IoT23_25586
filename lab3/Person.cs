@@ -1,4 +1,4 @@
-namespace lab3.Functions
+namespace lab3.Database
 {
     public class Person
         {

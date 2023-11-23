@@ -1,14 +1,16 @@
-namespace lab3.Functions
+using lab3.Database;
+
+namespace lab3.Services
 {
     public class PersonService
     {
         private List<Person> people { get; } = new List<Person>();
 
-        public Person Add(string firstName, string lastName)
+        public Person AddPerson(Person personData)
         {
             var person = new Person {
-                firstName = firstName,
-                lastName = lastName,
+                firstName = personData.firstName,
+                lastName = personData.lastName,
                 id = people.Count + 1
             };
 
@@ -36,7 +38,7 @@ namespace lab3.Functions
             return people.First(w => w.id == id);
         }
 
-        public IEnumerable<Person> Get()
+        public IEnumerable<Person> GetPeople()
         {
             return people;
         }

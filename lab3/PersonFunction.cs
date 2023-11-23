@@ -1,11 +1,10 @@
 using System.Net;
 using System.Text.Json;
-using Azure;
-using lab3.Functions;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using static lab3.Functions.Person;
+using lab3.Services;
+using lab3.Database;
 
 namespace lab3.Functions
 {

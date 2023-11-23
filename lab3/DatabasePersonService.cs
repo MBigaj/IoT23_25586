@@ -1,12 +1,10 @@
-using System.CodeDom;
-using System.Data.Entity.Core.Common.CommandTrees;
-using System.Data.Entity.Core.Objects.DataClasses;
+using lab3.Database;
 
-namespace lab3.Functions
+namespace lab3.Services
 {
     public class DatabasePersonService : PersonService
     {
-        private readonly PersonDb db;
+        private PersonDb db;
 
         public DatabasePersonService(PersonDb db)
         {
@@ -21,8 +19,8 @@ namespace lab3.Functions
                 lastName = person.lastName
             };
 
-            this.db.Person.Add(entity);
-            this.db.SaveChanges();
+            db.Person.AddPerson(entity);
+            db.SaveChanges();
 
             person.id = entity.id;
             return person;

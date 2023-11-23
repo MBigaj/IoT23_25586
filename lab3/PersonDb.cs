@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace lab3.Functions
+namespace lab3.Database
 {
     public class PersonDb : DbContext
     {
