@@ -1,10 +1,11 @@
 using Microsoft.Extensions.Logging;
 using lab3.Services;
 using lab3.Database;
-using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.AspNetCore.Mvc;
+using FromBodyAttribute = Microsoft.AspNetCore.Mvc.FromBodyAttribute;
 
 namespace lab3.Functions
-{
+{   
     [ApiController]
     [Route("person")]
     public class PersonConTroller : ControllerBase
@@ -30,5 +31,10 @@ namespace lab3.Functions
             return personService.AddPerson(person);
         }
 
+        [HttpGet("{id}")]
+        public Person FindById([FromRoute] int id)
+        {
+            return personService.FindById(id);
+        }
     }
 }

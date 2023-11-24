@@ -2,7 +2,7 @@ using lab3.Database;
 
 namespace lab3.Services
 {
-    public class DatabasePersonService : PersonService
+    public class DatabasePersonService : PersonServiceInterface
     {
         private PersonDb db;
 
@@ -11,7 +11,7 @@ namespace lab3.Services
             this.db = db;
         }
 
-        public class AddPerson(Person person)
+        public Person AddPerson(Person person)
         {
             var entity = new Person
             {
@@ -19,16 +19,22 @@ namespace lab3.Services
                 lastName = person.lastName
             };
 
-            db.Person.AddPerson(entity);
-            db.SaveChanges();
+            this.db.Person.Add(entity);
+            this.db.SaveChanges();
 
             person.id = entity.id;
             return person;
         }
 
+        public Person FindById(int id)
+        {
+            var person = this.db.Person.First(w => w.id == id);
+            return this.MapToDTO(person);
+        }
+
         public IEnumerable<Person> GetPeople()
         {
-            var peopleList = db.Person.Select(s => new Person
+            var peopleList = this.db.Person.Select(s => new Person
             {
                 id = s.id,
                 firstName = s.firstName,
@@ -36,6 +42,16 @@ namespace lab3.Services
             });
 
             return peopleList;
+        }
+
+        public Person MapToDTO(Person entity)
+        {
+            return new Person
+            {
+                id = entity.id,
+                firstName = entity.firstName,
+                lastName = entity.lastName
+            };
         }
     }
 }

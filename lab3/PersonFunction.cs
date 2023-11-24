@@ -33,7 +33,7 @@ namespace lab3.Functions
                 case "POST":
                     var jsonPost = reader.ReadToEnd();
                     var personPost = JsonSerializer.Deserialize<Person>(jsonPost);
-                    var resPost = personService.Add(personPost.firstName, personPost.lastName);
+                    var resPost = personService.AddPerson(personPost);
                     response.WriteAsJsonAsync(resPost);
                     break;
                 case "PUT":
@@ -43,7 +43,7 @@ namespace lab3.Functions
                     response.WriteAsJsonAsync(resPut);
                     break;
                 case "GET":
-                    var peopleGet = personService.Get();
+                    var peopleGet = personService.GetPeople();
                     response.WriteAsJsonAsync(peopleGet);
                     break;
                 case "DELETE":
