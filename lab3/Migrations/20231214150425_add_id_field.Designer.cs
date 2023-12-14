@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using lab3.Database;
 
@@ -10,9 +11,11 @@ using lab3.Database;
 namespace lab3.Migrations
 {
     [DbContext(typeof(PersonDb))]
-    partial class PersonDbModelSnapshot : ModelSnapshot
+    [Migration("20231214150425_add_id_field")]
+    partial class add_id_field
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +37,7 @@ namespace lab3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("streetName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
