@@ -12,7 +12,7 @@ namespace lab3.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ConfigurePersonEntity(modelBuilder.Entity<Person>());
-            ConfigureAddressEntity(modelBuilder.Entity<Address>());
+            // ConfigureAddressEntity(modelBuilder.Entity<Address>());
             base.OnModelCreating(modelBuilder);
         }
 
@@ -22,9 +22,9 @@ namespace lab3.Database
             entity.Property(p => p.firstName).IsRequired();
             entity.Property(p => p.lastName).IsRequired();
 
-            entity.HasOne(a => a.address)
-            .WithMany(p => p.people)
-            .HasForeignKey(fk => fk.id);
+            // entity.HasOne(a => a.address)
+            // .WithMany(p => p.people)
+            // .HasForeignKey(fk => fk.id);
         }
 
         private void ConfigureAddressEntity(EntityTypeBuilder<Address> entity)
@@ -33,12 +33,12 @@ namespace lab3.Database
             entity.Property(a => a.city).IsRequired();
             entity.Property(a => a.streetName);
 
-            entity.HasMany(p => p.people)
-            .WithOne(a => a.address)
-            .HasForeignKey(fk => fk.id);
+            // entity.HasMany(p => p.people)
+            // .WithOne(a => a.address)
+            // .HasForeignKey(fk => fk.id);
         }
 
         public DbSet<Person> Person { get; set; }
-        public DbSet<Address> Address { get; set; }
+        // public DbSet<Address> Address { get; set; }
     }
 }

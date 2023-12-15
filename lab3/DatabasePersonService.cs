@@ -34,14 +34,7 @@ namespace lab3.Services
 
         public IEnumerable<Person> GetPeople()
         {
-            var peopleList = this.db.Person.Select(s => new Person
-            {
-                id = s.id,
-                firstName = s.firstName,
-                lastName = s.lastName
-            });
-
-            return peopleList;
+            return this.db.Person.Select(s => this.MapToDTO(s));
         }
 
         public Person MapToDTO(Person entity)

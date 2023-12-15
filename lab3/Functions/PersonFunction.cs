@@ -11,9 +11,9 @@ namespace lab3.Functions
     public class PersonFunction
     {
         private readonly ILogger _logger;
-        private readonly PersonService personService;
+        private readonly DatabasePersonService personService;
 
-        public PersonFunction(ILoggerFactory loggerFactory, PersonService personService)
+        public PersonFunction(ILoggerFactory loggerFactory, DatabasePersonService personService)
         {
             _logger = loggerFactory.CreateLogger<PersonFunction>();
             this.personService = personService;
@@ -36,23 +36,23 @@ namespace lab3.Functions
                     var resPost = personService.AddPerson(personPost);
                     response.WriteAsJsonAsync(resPost);
                     break;
-                case "PUT":
-                    var jsonPut = reader.ReadToEnd();
-                    var personPut = JsonSerializer.Deserialize<Person>(jsonPut);
-                    var resPut = personService.Update(personPut);
-                    response.WriteAsJsonAsync(resPut);
-                    break;
+                // case "PUT":
+                //     var jsonPut = reader.ReadToEnd();
+                //     var personPut = JsonSerializer.Deserialize<Person>(jsonPut);
+                //     var resPut = personService.Update(personPut);
+                //     response.WriteAsJsonAsync(resPut);
+                //     break;
                 case "GET":
                     var peopleGet = personService.GetPeople();
                     response.WriteAsJsonAsync(peopleGet);
                     break;
-                case "DELETE":
-                    var jsonDel = reader.ReadToEnd();
-                    var personDel = JsonSerializer.Deserialize<Person>(jsonDel);
-                    var idDel = personDel.id;
-                    personService.Delete(idDel);
-                    response.WriteAsJsonAsync(idDel + " DELETED");
-                    break;
+                // case "DELETE":
+                //     var jsonDel = reader.ReadToEnd();
+                //     var personDel = JsonSerializer.Deserialize<Person>(jsonDel);
+                //     var idDel = personDel.id;
+                //     personService.Delete(idDel);
+                //     response.WriteAsJsonAsync(idDel + " DELETED");
+                //     break;
             }
 
             return response;
