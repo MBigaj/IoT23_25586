@@ -13,9 +13,9 @@ var host = new HostBuilder()
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
         services.AddSingleton<DatabasePersonService>();
-        // services.AddSingleton<DatabaseAddressService>();
+        services.AddSingleton<DatabaseAddressService>();
         services.AddDbContext<PersonDb>(options => {
-            options.UseSqlServer("Server=tcp:iot-server-cdv.database.windows.net,1433;Initial Catalog=iot_database;Persist Security Info=False;User ID=nick;Password=Superdatabase1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            options.UseSqlServer("Server=tcp:lab3-iot.database.windows.net,1433;Initial Catalog=iot-database;Persist Security Info=False;User ID=nick;Password=Superdatabase1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         });
     })
     .Build();

@@ -6,6 +6,6 @@ namespace lab3.Database
         public string city { get; set ;}
         public string ?streetName { get; set ;}
 
-        // public List<Person> people { get; set; }
+        public List<Person> people { get; set; }
     }
 }

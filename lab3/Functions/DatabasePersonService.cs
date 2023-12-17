@@ -6,6 +6,8 @@ namespace lab3.Services
     {
         private PersonDb db;
 
+        private DatabaseAddressService databaseAddressService;
+
         public DatabasePersonService(PersonDb db)
         {
             this.db = db;
@@ -16,7 +18,8 @@ namespace lab3.Services
             var entity = new Person
             {
                 firstName = person.firstName,
-                lastName = person.lastName
+                lastName = person.lastName,
+                addressId = person.addressId
             };
 
             this.db.Person.Add(entity);
@@ -34,7 +37,16 @@ namespace lab3.Services
 
         public IEnumerable<Person> GetPeople()
         {
-            return this.db.Person.Select(s => this.MapToDTO(s));
+            var databaseAddressService = new DatabaseAddressService(this.db);
+
+            var people = this.db.Person.Select(s => new Person
+            {
+                id = s.id,
+                firstName = s.firstName,
+                lastName = s.lastName,
+            });
+
+            return people;
         }
 
         public Person MapToDTO(Person entity)

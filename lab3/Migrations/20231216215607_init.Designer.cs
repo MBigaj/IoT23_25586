@@ -11,7 +11,7 @@ using lab3.Database;
 namespace lab3.Migrations
 {
     [DbContext(typeof(PersonDb))]
-    [Migration("20231215103626_init")]
+    [Migration("20231216215607_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -24,6 +24,26 @@ namespace lab3.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("lab3.Database.Address", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("city")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("streetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Address", (string)null);
+                });
+
             modelBuilder.Entity("lab3.Database.Person", b =>
                 {
                     b.Property<int>("id")
@@ -31,6 +51,9 @@ namespace lab3.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("addressId")
+                        .HasColumnType("int");
 
                     b.Property<string>("firstName")
                         .IsRequired()
@@ -42,7 +65,25 @@ namespace lab3.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("addressId");
+
                     b.ToTable("Person", (string)null);
+                });
+
+            modelBuilder.Entity("lab3.Database.Person", b =>
+                {
+                    b.HasOne("lab3.Database.Address", "address")
+                        .WithMany("people")
+                        .HasForeignKey("addressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("address");
+                });
+
+            modelBuilder.Entity("lab3.Database.Address", b =>
+                {
+                    b.Navigation("people");
                 });
 #pragma warning restore 612, 618
         }
